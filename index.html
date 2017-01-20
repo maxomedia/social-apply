@@ -9,18 +9,32 @@
 
 	<script src="js/linkedin.js"></script>
 	<script type="text/javascript" src="//platform.linkedin.com/in.js">
-		/* set authorize to true for auto login */
-	    api_key: 78qjbz8qwwqvqc
-	    onLoad: Linkedin.init
-	    authorize: false
+	    api_key:	78qjbz8qwwqvqc
+	    onLoad:		LIinit
+	    authorize:	true
 	</script>
 
 </head>
 <body>
 
 <h1>Log dich halt mal ein.</h1>
-<div id="result"></div>
+<div id="li-result"></div>
 <script type="in/Login"></script>
+
+
+<div id="xing-result"></div>
+<script type="xing/login">
+	{
+		"consumer_key": "e4a5cda633462237efde"
+	}
+</script>
+
+<script>(function(d) {
+	var js, id='lwx';
+	if (d.getElementById(id)) return;
+	js = d.createElement('script'); js.id = id; js.src = "https://www.xing-share.com/plugins/login.js";
+	d.getElementsByTagName('head')[0].appendChild(js)
+}(document));</script>
 
 </body>
 </html>

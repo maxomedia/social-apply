@@ -8,31 +8,28 @@
 	Apply for Linkedin Program: https://developer.linkedin.com/partner-programs/apply
 */
 
-window.Linkedin = {
-	init: function(){
-		IN.Event.on(IN, "auth", Linkedin.onAuthCallback);
-	},
-	onAuthCallback: function(){
-		IN.API.Profile("me").result(Linkedin.showUserData).error(Linkedin.onError);
-	},
-	showUserData: function(profiles){
-		console.log(profiles);
+function LIinit() { 
+	console.log("linkedin initialized");
+	
+	IN.Event.on(IN, "auth", LIonAuthCallback);
+}
 
-		var member = profiles.values[0];
-		var id = member.id;
-		var firstName = member.firstName; 
-		var lastName = member.lastName; 
-		var photo = member.pictureUrl; 
-		var headline = member.headline; 
+function LIonAuthCallback() { 
+	IN.API.Profile("me").result(LIshowUserData).error(LIonError);
+}
 
-		$('#result').html(''
-			+ ' <img src="' + member.pictureUrl + '" \/>'
-			+ '<p>' + member.firstName + ' ' + member.lastName + '</p>'
-			+ '<p>' + member.headline + ' (' + member.id + ')</p>'
-		);
-	},
-	onError: function(error) {
-		console.log(error);
-	}
+function LIshowUserData(profiles) { 
+	console.log(profiles);
 
-};
+	var member = profiles.values[0];
+
+	$('#li-result').html(''
+		+ ' <img src="' + member.pictureUrl + '" \/>'
+		+ '<p>' + member.firstName + ' ' + member.lastName + '</p>'
+		+ '<p>' + member.headline + ' (' + member.id + ')</p>'
+	);
+}
+
+function LIonError(error) { 
+	console.log(error);
+}
